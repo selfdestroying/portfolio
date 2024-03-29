@@ -1,0 +1,67 @@
+---
+interface Props {
+	title: string
+}
+
+const { title } = Astro.props
+---
+
+<!doctype html>
+<html lang='en'>
+	<head>
+		<meta charset='UTF-8' />
+		<meta name='description' content='Astro description' />
+		<meta name='viewport' content='width=device-width' />
+		<link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+		<meta name='generator' content={Astro.generator} />
+		<link rel='preconnect' href='https://fonts.googleapis.com' />
+		<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
+		<link
+			href='https://fonts.googleapis.com/css2?family=Bai+Jamjuree:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap'
+			rel='stylesheet'
+		/>
+		<title>{title}</title>
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+<style is:global>
+	:root {
+		--purple-90: #d6ccff;
+		--purple-80: #ac99ff;
+		--green-40: #00cc96;
+		--light-90: #e6e6e6;
+		--light-60: #999999;
+		--dark--10: #1a1a1a;
+		--dark-06: #0f0f0f;
+		--dark-02: #050505;
+	}
+	* {
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+		font-family: Bai Jamjuree;
+	}
+	body {
+		background-color: var(--dark-02);
+	}
+	h1 {
+		font-weight: 500;
+		color: var(--light-90);
+		font-size: 36px;
+		line-height: 1.2em;
+	}
+	h2 {
+		font-weight: 500;
+		color: var(--light-90);
+		font-size: 18px;
+		line-height: 1.2em;
+	}
+	h3 {
+		font-weight: 400;
+		color: var(--light-90);
+		font-size: 16px;
+		line-height: 1.4em;
+	}
+</style>
