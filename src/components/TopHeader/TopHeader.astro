@@ -1,0 +1,29 @@
+---
+import Availability from '../TopHeader/Availability.astro'
+import Profile from '../TopHeader/Profile.astro'
+import Socials from '../TopHeader/Socials.astro'
+---
+
+<div class='top-header'>
+	<div class='top-header-container'>
+		<Profile />
+		<Availability />
+		<Socials />
+	</div>
+</div>
+
+<style>
+	.top-header {
+		width: 800px;
+		animation: fade-in 0.25s ease-in-out;
+	}
+	.top-header-container {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		flex-wrap: nowrap;
+		padding: 6px 19px 6px 6px;
+		background-color: var(--dark-06);
+		border-radius: 30px;
+	}
+</style>

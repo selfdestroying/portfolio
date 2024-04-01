@@ -1,0 +1,24 @@
+---
+import SocialIcon from '../SocialIcon'
+---
+
+<div class='socials'>
+	<div class='socials-container'>
+		<SocialIcon client:only />
+		<SocialIcon client:only />
+		<SocialIcon client:only />
+		<SocialIcon client:only />
+	</div>
+</div>
+
+<style>
+	.socials {
+		width: fit-content;
+	}
+	.socials-container {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 12px;
+	}
+</style>
