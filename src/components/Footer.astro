@@ -1,0 +1,62 @@
+---
+
+---
+
+<div class='footer'>
+	<div class='about-container'>
+		<p class='copyright'>© 2023. All rights Reserved.</p>
+		<p class='made-by'>
+			Made by <a href='#' class='name'>UXUIcristian</a> in <a
+				href='#'
+				class='framer'>Framer</a
+			>
+		</p>
+	</div>
+	<div class='links-container'>
+		<a href='#'>Licensing</a>
+		<a href='#'>404</a>
+	</div>
+</div>
+
+<style>
+	.footer {
+		width: 800px;
+		display: flex;
+		flex-direction: row;
+		@media screen and (max-width: 800px) {
+			width: 390px;
+			flex-direction: column;
+			justify-content: center;
+			gap: 24px;
+		}
+		align-items: center;
+		justify-content: space-between;
+		flex-wrap: nowrap;
+		padding: 24px;
+		background-color: var(--dark-06);
+		border-radius: 30px;
+	}
+	.about-container,
+	.links-container {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		@media screen and (max-width: 800px) {
+			align-items: center;
+		}
+		justify-content: center;
+		gap: 12px;
+	}
+	.copyright,
+	.made-by {
+		font-size: 14px;
+		line-height: 1.4em;
+		color: var(--light-60);
+		font-weight: 300;
+	}
+	.name,
+	.framer {
+		font-weight: 500;
+		color: var(--light-90);
+	}
+</style>

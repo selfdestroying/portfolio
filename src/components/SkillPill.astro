@@ -1,0 +1,30 @@
+---
+import Pill from './Pill.astro'
+interface Props {
+	title: string
+}
+const { title } = Astro.props
+---
+
+<div class='skill-pill'>
+	<div class='skill-icon'>
+		<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14'
+			><path
+				d='M 4.356 7.726 C 5.34 7.89 6.11 8.66 6.274 9.644 L 7 14 L 7.726 9.644 C 7.89 8.66 8.66 7.89 9.644 7.726 L 14 7 L 9.644 6.274 C 8.66 6.11 7.89 5.34 7.726 4.356 L 7 0 L 6.274 4.356 C 6.11 5.34 5.34 6.11 4.356 6.274 L 0 7 Z'
+				fill='rgb(172, 153, 255)'></path></svg
+		>
+	</div>
+	<Pill title={title} color='var(--light-90)' />
+</div>
+
+<style>
+	.skill-pill {
+		width: fit-content;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		gap: 12px;
+		padding-left: 12px;
+	}
+</style>

@@ -1,0 +1,21 @@
+---
+import Globe from './Globe.tsx'
+import Heading from './Heading'
+import Section from './Section.astro'
+const section = {
+	flex: '1',
+}
+const container = {
+	height: '240px',
+	backgroundColor: 'var(--dark-06)',
+	borderRadius: '30px',
+	animation: 'fade-in 0.25s ease-in-out',
+	padding: '24px',
+	overflow: 'hidden',
+}
+---
+
+<Section section={section} container={container}>
+	<Heading client:only />
+	<Globe client:only />
+</Section>

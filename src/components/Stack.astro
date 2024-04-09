@@ -1,0 +1,114 @@
+---
+import Framer from './Icons/Framer.astro'
+interface Props {
+	isEnd?: boolean
+}
+const { isEnd = false } = Astro.props
+---
+
+<div class='stack'>
+	<a href='#' class='stack-link'>
+		<div class='stack-header'>
+			<div class='stack-icon'>
+				<Framer size={44} />
+			</div>
+			<div class='stack-title'>
+				<slot name='title' class='stack-title-text' />
+				<slot name='role' class='role' />
+			</div>
+		</div>
+		<div class='stack-description'>
+			<div class='line-container'>
+				{!isEnd && <div class='line' />}
+			</div>
+			<div class='description-container'>
+				<slot name='description' />
+			</div>
+		</div>
+	</a>
+</div>
+
+<style is:inline>
+	.stack {
+		max-width: 752px;
+		width: 100%;
+	}
+	.stack-link {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: flex-start;
+		gap: 8px;
+	}
+	.stack-header {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: flex-start;
+		gap: 8px;
+	}
+	.stack-icon {
+		width: 68px;
+		height: 68px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: var(--dark-10);
+		border-radius: 24px;
+	}
+	.stack-title {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: center;
+		gap: 2px;
+	}
+	.role {
+		font-size: 14px;
+		line-height: 1.2em;
+		color: var(--light-60);
+		font-weight: 300;
+	}
+	.stack-description {
+		align-items: flex-start;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		gap: 8px;
+		height: min-content;
+		justify-content: flex-start;
+		overflow: hidden;
+		width: 100%;
+	}
+	.line-container {
+		width: 68px;
+		display: flex;
+		@media screen and (max-width: 800px) {
+			display: none;
+		}
+		flex: none;
+		height: 100%;
+		align-items: center;
+		justify-content: center;
+	}
+	.line {
+		height: 100%;
+		width: 2px;
+		background-color: var(--dark-10);
+	}
+	.description-container {
+		width: 100%;
+		padding: 0 0 24px;
+	}
+	.description {
+		font-weight: 300;
+		color: var(--light-60);
+		font-size: 16px;
+		line-height: 1.2em;
+		text-wrap: wrap;
+		overflow-wrap: break-word;
+		word-wrap: break-word;
+	}
+</style>

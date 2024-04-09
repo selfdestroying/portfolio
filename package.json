@@ -17,8 +17,10 @@
 		"@types/react": "^18.2.73",
 		"@types/react-dom": "^18.2.23",
 		"astro": "^4.5.10",
+		"cobe": "^0.6.3",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
+		"react-spring": "^9.7.3",
 		"typescript": "^5.4.3"
 	}
 }

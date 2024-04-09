@@ -1,23 +1,32 @@
 ---
-import TopHeader from '../components/TopHeader/TopHeader.astro'
 import Layout from '../layouts/Layout.astro'
 ---
 
 <Layout title='Welcome to Astro.'>
-	<div class='container'>
-		<TopHeader />
-	</div>
+	<div class='container'></div>
 </Layout>
 
 <style>
 	.container {
-		min-height: 100vh;
 		width: auto;
+		height: 100vh;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: flex-start;
+		flex-wrap: nowrap;
 		gap: 24px;
-		padding: 24px 24px 102px 24px;
+		background-color: var(--dark-02);
+		padding: 24px 24px 102px;
+		overflow: hidden;
 	}
+	/* .section {
+		max-width: 800px;
+		width: 100%;
+		background-color: var(--dark-06);
+		border-radius: 30px;
+		display: flex;
+		flex-direction: column;
+		padding: 24px;
+	} */
 </style>

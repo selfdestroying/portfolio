@@ -1,0 +1,35 @@
+---
+import MapPin from './Icons/MapPin.astro'
+
+type Icons = 'map-pin'
+interface Props {
+	title: string
+	icon: Icons
+}
+const { title, icon } = Astro.props
+const iconMap = {
+	'map-pin': MapPin,
+}
+const IconComponent = iconMap[icon]
+---
+
+<div class='section-title'>
+	<div class='section-title-icon'>
+		<IconComponent size={21} />
+	</div>
+	<h2 class='section-title-text'>{title}</h2>
+</div>
+
+<style>
+	.section-title {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: center;
+		gap: 8px;
+	}
+	.section-title-icon {
+		color: var(--green-40);
+		font-weight: 500;
+	}
+</style>

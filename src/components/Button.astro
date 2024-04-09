@@ -1,0 +1,117 @@
+---
+import ArrowLeft from './Icons/ArrowLeft.astro'
+import ArrowRight from './Icons/ArrowRight.astro'
+import CurrencyDollarSimple from './Icons/CurrencyDollarSimple.astro'
+import Eye from './Icons/Eye.astro'
+
+interface Props {
+	link?: string
+	theme?: 'dark' | 'light'
+	reverse?: boolean
+	icon?: 'arrow-left' | 'right-arrow' | 'eye' | 'currency-dollar-simple'
+	newTab?: boolean
+}
+const {
+	link = '#',
+	newTab = false,
+	theme = 'light',
+	reverse = false,
+	icon = null,
+} = Astro.props
+const iconMap = {
+	'arrow-left': ArrowLeft,
+	'right-arrow': ArrowRight,
+	eye: Eye,
+	'currency-dollar-simple': CurrencyDollarSimple,
+}
+const IconComponent = icon ? iconMap[icon] : 'div'
+const iconIsArrow = icon && icon.includes('arrow')
+---
+
+<a
+	target={newTab ? '_blank' : '_self'}
+	rel='noopener noreferrer'
+	href={link}
+	class:list={['button-link', theme]}
+>
+	<div class:list={['button-inner-container', { reverse, arrow: iconIsArrow }]}>
+		<p class='button-text'>Button</p>
+		{
+			icon && (
+				<div class='button-icon'>
+					<IconComponent />
+				</div>
+			)
+		}
+	</div>
+</a>
+
+<style>
+	.button-link {
+		width: fit-content;
+		height: 42px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-wrap: nowrap;
+		border-radius: 12px;
+	}
+	.button-link.light {
+		background-color: var(--purple-80);
+		color: var(--dark-02);
+		transition:
+			background-color 0.3s cubic-bezier(0.44, 0, 0.56, 1),
+			color 0.3s cubic-bezier(0.44, 0, 0.56, 1);
+	}
+	.button-link.dark {
+		background-color: var(--dark-10);
+		color: var(--purple-80);
+		transition:
+			background-color 0.3s cubic-bezier(0.44, 0, 0.56, 1),
+			color 0.3s cubic-bezier(0.44, 0, 0.56, 1);
+	}
+	.button-link.light:hover {
+		background-color: var(--purple-90);
+		transition:
+			background-color 0.3s cubic-bezier(0.44, 0, 0.56, 1),
+			color 0.3s cubic-bezier(0.44, 0, 0.56, 1);
+	}
+	.button-link.dark:hover {
+		color: var(--purple-90);
+		transition:
+			background-color 0.3s cubic-bezier(0.44, 0, 0.56, 1),
+			color 0.3s cubic-bezier(0.44, 0, 0.56, 1);
+	}
+	.button-inner-container {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-wrap: nowrap;
+		gap: 6px;
+		padding: 0 24px;
+	}
+	.button-inner-container.reverse {
+		flex-direction: row-reverse;
+	}
+	.button-text {
+		font-size: 14px;
+		line-height: 1.2em;
+		font-weight: 500;
+	}
+	.button-icon {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transition: transform 0.3s cubic-bezier(0.44, 0, 0.56, 1);
+	}
+	.button-link:hover > .arrow .button-icon {
+		transform: translateX(4px);
+		transition: transform 0.3s cubic-bezier(0.44, 0, 0.56, 1);
+	}
+	.button-link > .reverse.arrow:hover .button-icon {
+		transform: translateX(-4px);
+		transition: transform 0.3s cubic-bezier(0.44, 0, 0.56, 1);
+	}
+</style>

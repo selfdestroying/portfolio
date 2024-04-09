@@ -1,0 +1,70 @@
+---
+interface Props {
+	state?: 'start' | 'end'
+}
+
+const { state = 'start' } = Astro.props
+---
+
+<div class='info-card'>
+	<div class=`road ${state}`>
+		<div class='road-dot'></div>
+		{state === 'start' && <div class='road-line' />}
+	</div>
+
+	<div class='info-card-container'>
+		<h3>Bachelor's Degree in Web Design and Development</h3>
+		<p>XYZ University, 2010</p>
+	</div>
+</div>
+
+<style>
+	.info-card {
+		width: 752px;
+		@media screen and (max-width: 800px) {
+			width: 342px;
+		}
+		display: flex;
+		align-items: flex-start;
+		flex-wrap: nowrap;
+		gap: 8px;
+	}
+	.road {
+		width: 68px;
+		@media screen and (max-width: 800px) {
+			width: 21px;
+		}
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-between;
+		flex-wrap: nowrap;
+		gap: 10px;
+		background-color: var(--dark-06);
+		border-radius: 24px;
+	}
+	.road.start {
+		height: 65px;
+	}
+	.road.end {
+		height: 41px;
+	}
+	.road-dot {
+		width: 6px;
+		height: 6px;
+		border-radius: 6px;
+		background-color: var(--purple-80);
+		transform: translateY(8px);
+	}
+	.road-line {
+		width: 2px;
+		height: 43px;
+		background-color: var(--dark-10);
+	}
+	.info-card-container p {
+		font-size: 14px;
+		line-height: 1.2em;
+		color: var(--light-60);
+		font-weight: 300;
+	}
+</style>

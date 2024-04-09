@@ -1,0 +1,66 @@
+---
+import SkillPill from './SkillPill.astro'
+interface Props {
+	speed?: number
+	reverse?: boolean
+}
+const { speed = 5, reverse = false } = Astro.props
+---
+
+<div class='ticker'>
+	<ul
+		class='ticker-list'
+		style={{
+			animationDuration: `${speed}s`,
+			animationDirection: reverse ? 'reverse' : 'normal',
+		}}
+	>
+		<li class='ticker-item'><SkillPill title='Responsive Design' /></li>
+		<li class='ticker-item'><SkillPill title='UI/UX Expertise' /></li>
+		<li class='ticker-item'><SkillPill title='HTML5/CSS3 Mastery' /></li>
+	</ul>
+	<ul
+		class='ticker-list'
+		style={{
+			animationDuration: `${speed}s`,
+			animationDirection: reverse ? 'reverse' : 'normal',
+		}}
+	>
+		<li class='ticker-item'><SkillPill title='Responsive Design' /></li>
+		<li class='ticker-item'><SkillPill title='UI/UX Expertise' /></li>
+		<li class='ticker-item'><SkillPill title='HTML5/CSS3 Mastery' /></li>
+	</ul>
+</div>
+
+<style>
+	.ticker {
+		width: 340px;
+
+		display: flex;
+		flex-direction: row;
+		overflow: hidden;
+		mask-image: linear-gradient(
+			to right,
+			rgba(0, 0, 0, 0) 0%,
+			rgb(0, 0, 0) 12.5%,
+			rgb(0, 0, 0) 87.5%,
+			rgba(0, 0, 0, 0) 100%
+		);
+	}
+	.ticker-list {
+		white-space: nowrap;
+		animation: animate 30s linear infinite;
+	}
+
+	.ticker-item {
+		display: inline-block;
+	}
+	@keyframes animate {
+		0% {
+			transform: translateX(0);
+		}
+		100% {
+			transform: translateX(-100%);
+		}
+	}
+</style>

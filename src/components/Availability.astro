@@ -1,0 +1,48 @@
+---
+interface Props {
+	available: boolean
+}
+const { available = false } = Astro.props
+---
+
+<div class:list={['availability-container', { available }]}>
+	<div class:list={['availability-icon', { available }]}></div>
+	<p class:list={['availability-text', { available }]}>
+		{available ? 'Available for work' : 'Not Available'}
+	</p>
+</div>
+
+<style>
+	.availability-container {
+		width: fit-content;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-wrap: nowrap;
+		gap: 8px;
+		padding: 6px 12px 6px 12px;
+		border-radius: 12px;
+		background-color: var(--dark-10);
+		border: 1px solid var(--light-60);
+	}
+	.availability-icon {
+		width: 6px;
+		height: 6px;
+		border-radius: 4px;
+		background-color: var(--light-60);
+	}
+	.availability-text {
+		color: var(--light-60);
+		font-size: 14px;
+		font-weight: 300;
+	}
+	.availability-container.available {
+		border: 1px solid var(--green-40);
+	}
+	.availability-icon.available {
+		background-color: var(--green-40);
+	}
+	.availability-text.available {
+		color: var(--light-90);
+	}
+</style>
