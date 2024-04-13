@@ -1,0 +1,76 @@
+<div class='feedback-card'>
+	<div class='user-info'>
+		<div class='user-image'>
+			<img
+				src='https://framerusercontent.com/images/TiDwSKaaxBq3prXxaH8FRzebdGk.jpg?scale-down-to=512'
+				alt=''
+			/>
+		</div>
+		<div class='user-text'>
+			<h3 class='user-name'>Mei Tanaka</h3>
+			<p class='user-role'>TechPro Solutions</p>
+		</div>
+	</div>
+	<p class='feedback-text'>
+		"Patricia's web design skills transformed our outdated website into a modern
+		and user-friendly platform. Her attention to detail and dedication to
+		understanding our brand made the process smooth and enjoyable. We're
+		thrilled with the results!"
+	</p>
+</div>
+
+<style>
+	.feedback-card {
+		max-width: 413px;
+		width: 100%;
+		height: 400px;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: flex-start;
+		gap: 24px;
+		padding: 48px;
+		background-color: var(--dark-06);
+		border-radius: 30px;
+		white-space: wrap;
+	}
+	.user-info {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		gap: 8px;
+	}
+	.user-image {
+		width: 68px;
+		height: 68px;
+		border-radius: 24px;
+		overflow: hidden;
+	}
+	.user-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+	}
+	.user-text {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: center;
+		gap: 2px;
+	}
+	.user-role {
+		font-size: 14px;
+		line-height: 1.2em;
+		color: var(--light-60);
+		font-weight: 300;
+	}
+	.feedback-text {
+		font-size: 16px;
+		line-height: 1.2em;
+		font-weight: 300;
+		color: var(--light-60);
+		font-style: italic;
+	}
+</style>

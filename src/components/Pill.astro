@@ -2,29 +2,38 @@
 interface Props {
 	title: string
 	color?: string
+	textSize?: string
+	height?: string
 }
-const { title, color = 'var(--purple-80)' } = Astro.props
+const {
+	title,
+	color = 'var(--purple-80)',
+	textSize = '12px',
+	height = '22px',
+} = Astro.props
 ---
 
-<div class='pill'>
-	<p class='pill_text' style={`color: ${color}`}>{title}</p>
+<div
+	class='pill'
+	style={`height: ${height}; border-radius: ${height === '22px' ? '8px' : '12px'};`}
+>
+	<p class='pill_text' style={`color: ${color}; font-size: ${textSize};`}>
+		{title}
+	</p>
 </div>
 
 <style>
 	.pill {
 		width: fit-content;
-		height: 22px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		flex-wrap: nowrap;
 		gap: 10px;
 		padding: 0 8px;
-		border-radius: 8px;
 		background-color: var(--dark-10);
 	}
 	.pill_text {
-		font-size: 12px;
 		line-height: 1.2em;
 		font-weight: 300;
 		text-wrap: nowrap;

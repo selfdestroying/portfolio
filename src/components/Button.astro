@@ -5,6 +5,7 @@ import CurrencyDollarSimple from './Icons/CurrencyDollarSimple.astro'
 import Eye from './Icons/Eye.astro'
 
 interface Props {
+	text: string
 	link?: string
 	theme?: 'dark' | 'light'
 	reverse?: boolean
@@ -12,6 +13,7 @@ interface Props {
 	newTab?: boolean
 }
 const {
+	text,
 	link = '#',
 	newTab = false,
 	theme = 'light',
@@ -28,27 +30,34 @@ const IconComponent = icon ? iconMap[icon] : 'div'
 const iconIsArrow = icon && icon.includes('arrow')
 ---
 
-<a
-	target={newTab ? '_blank' : '_self'}
-	rel='noopener noreferrer'
-	href={link}
-	class:list={['button-link', theme]}
->
-	<div class:list={['button-inner-container', { reverse, arrow: iconIsArrow }]}>
-		<p class='button-text'>Button</p>
-		{
-			icon && (
-				<div class='button-icon'>
-					<IconComponent />
-				</div>
-			)
-		}
-	</div>
-</a>
+<div class='button-container'>
+	<a
+		target={newTab ? '_blank' : '_self'}
+		rel='noopener noreferrer'
+		href={link}
+		class:list={['button-link', theme]}
+	>
+		<div
+			class:list={['button-inner-container', { reverse, arrow: iconIsArrow }]}
+		>
+			<p class='button-text'>{text}</p>
+			{
+				icon && (
+					<div class='button-icon'>
+						<IconComponent />
+					</div>
+				)
+			}
+		</div>
+	</a>
+</div>
 
 <style>
+	.button-container {
+		width: 100%;
+	}
 	.button-link {
-		width: fit-content;
+		width: auto;
 		height: 42px;
 		display: flex;
 		align-items: center;

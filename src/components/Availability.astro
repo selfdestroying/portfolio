@@ -16,6 +16,9 @@ const { available = false } = Astro.props
 	.availability-container {
 		width: fit-content;
 		display: flex;
+		@media screen and (max-width: 800px) and (min-width: 390px) {
+			display: none;
+		}
 		align-items: center;
 		justify-content: center;
 		flex-wrap: nowrap;

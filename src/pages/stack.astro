@@ -1,0 +1,81 @@
+---
+import ContactSection from '../components/ContactSection.astro'
+import SkillCard from '../components/SkillCard.astro'
+import Layout from '../layouts/Layout.astro'
+---
+
+<Layout title='Stack'>
+	<div class='section hero'>
+		<div class='hero-container'>
+			<h1>Full Stack</h1>
+			<p class='hero-text'>
+				My technical toolkit includes proficiency in Framer, Figma, HTML, CSS,
+				JavaScript, and various design software like Adobe Creative Suite. I'm
+				also well-versed in responsive web design, ensuring that websites I
+				create look and function flawlessly across all devices.
+			</p>
+		</div>
+	</div>
+	<div class='section skills'>
+		<SkillCard>
+			<h3 slot='title' class='stack-title-text'>Framer</h3>
+			<p slot='role' class='role'>Web Design</p>
+			<p slot='description' class='description'>
+				Framer serves as my go-to tool for creating interactive prototypes. I
+				use it to bring designs to life, allowing stakeholders to experience the
+				user flow and interactions before development begins. It's invaluable
+				for refining the user experience.
+			</p>
+		</SkillCard>
+		<SkillCard>
+			<h3 slot='title' class='stack-title-text'>Framer</h3>
+			<p slot='role' class='role'>Web Design</p>
+			<p slot='description' class='description'>
+				Framer serves as my go-to tool for creating interactive prototypes. I
+				use it to bring designs to life, allowing stakeholders to experience the
+				user flow and interactions before development begins. It's invaluable
+				for refining the user experience.
+			</p>
+		</SkillCard>
+		<SkillCard>
+			<h3 slot='title' class='stack-title-text'>Framer</h3>
+			<p slot='role' class='role'>Web Design</p>
+			<p slot='description' class='description'>
+				Framer serves as my go-to tool for creating interactive prototypes. I
+				use it to bring designs to life, allowing stakeholders to experience the
+				user flow and interactions before development begins. It's invaluable
+				for refining the user experience.
+			</p>
+		</SkillCard>
+		<SkillCard isEnd>
+			<h3 slot='title' class='stack-title-text'>Framer</h3>
+			<p slot='role' class='role'>Web Design</p>
+			<p slot='description' class='description'>
+				Framer serves as my go-to tool for creating interactive prototypes. I
+				use it to bring designs to life, allowing stakeholders to experience the
+				user flow and interactions before development begins. It's invaluable
+				for refining the user experience.
+			</p>
+		</SkillCard>
+	</div>
+	<ContactSection />
+</Layout>
+
+<style>
+	.hero-container {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: flex-start;
+		gap: 12px;
+	}
+	.hero-text {
+		font-size: 16px;
+		line-height: 1.4em;
+		font-weight: 300;
+		color: var(--light-60);
+	}
+	.skills {
+		gap: 8px;
+	}
+</style>

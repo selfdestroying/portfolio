@@ -1,0 +1,35 @@
+---
+import Availability from './Availability.astro'
+import Profile from './Profile.astro'
+import SocialIconGroup from './SocialIconGroup.astro'
+---
+
+<div class='top-header'>
+	<Profile />
+	<Availability available={true} />
+	<SocialIconGroup />
+</div>
+
+<style>
+	.top-header {
+		width: 100%;
+		flex: none;
+		max-width: 800px;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: nowrap;
+		padding: 6px 19px 6px 6px;
+		background-color: var(--dark-06);
+		border-radius: 30px;
+
+		@media screen and (max-width: 390px) {
+			flex-direction: column;
+			gap: 24px;
+			justify-content: center;
+			align-items: center;
+			padding: 6px 6px 24px 6px;
+		}
+	}
+</style>

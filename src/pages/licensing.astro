@@ -1,0 +1,59 @@
+---
+import ContactSection from '../components/ContactSection.astro'
+import MenuButton from '../components/MenuButton.astro'
+import SectionTitle from '../components/SectionTitle.astro'
+import Layout from '../layouts/Layout.astro'
+---
+
+<Layout title='Licensing'>
+	<div class='section hero'>
+		<h1>Licensing</h1>
+	</div>
+	<div class='section links'>
+		<SectionTitle title='Contact' icon='map-pin' />
+		<div class='links-container'>
+			<MenuButton
+				text='Framer - Template'
+				variant='link'
+				icon='instagram'
+				link='https://www.framer.com/templates/darko/'
+				target='_blank'
+			/>
+			<MenuButton
+				text='Phosphor - Icons'
+				variant='link'
+				icon='telegram'
+				link='https://phosphoricons.com/'
+				target='_blank'
+			/>
+			<MenuButton
+				text='Google - Typography'
+				variant='link'
+				icon='instagram'
+				link='https://www.instagram.com/selfdestroyingq/'
+				target='_blank'
+			/>
+		</div>
+	</div>
+	<ContactSection />
+</Layout>
+
+<style>
+	.links-container {
+		display: grid;
+		flex: 0 0 auto;
+		gap: 12px;
+		grid-auto-rows: minmax(0px, 1fr);
+		grid-template-columns: repeat(2, minmax(200px, 1fr));
+		grid-template-rows: repeat(2, minmax(0px, 1fr));
+		height: min-content;
+		justify-content: center;
+		overflow: hidden;
+		padding: 0px;
+		position: relative;
+		width: 100%;
+		@media screen and (max-width: 800px) {
+			grid-template-columns: repeat(1, minmax(200px, 1fr));
+		}
+	}
+</style>

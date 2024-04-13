@@ -20,9 +20,12 @@ const { state = 'start' } = Astro.props
 
 <style>
 	.info-card {
-		width: 752px;
+		max-width: 752px;
+		width: 100%;
+
 		@media screen and (max-width: 800px) {
-			width: 342px;
+			max-width: 342px;
+			width: 100%;
 		}
 		display: flex;
 		align-items: flex-start;
@@ -66,5 +69,6 @@ const { state = 'start' } = Astro.props
 		line-height: 1.2em;
 		color: var(--light-60);
 		font-weight: 300;
+		white-space: wrap;
 	}
 </style>

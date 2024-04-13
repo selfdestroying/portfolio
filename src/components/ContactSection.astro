@@ -1,0 +1,92 @@
+---
+import ArrowRight from './Icons/ArrowRight.astro'
+---
+
+<div class='contact-me'>
+	<div class='over'>
+		<a href='#' class='over-link'>
+			<div class='over-button'>
+				<div class='over-icon'>
+					<ArrowRight size={48} color='var(--dark-02)' />
+				</div>
+			</div>
+		</a>
+	</div>
+	<a href='#' class='contact-me-link'>
+		<div class='contact-me-container' style='width: 100%; height: 100%;'>
+			<svg viewBox='0 0 754 209'>
+				<foreignObject width='100%' height='100%'>
+					<h1 class='contact-me-text'>Let's Talk</h1>
+				</foreignObject>
+			</svg>
+		</div>
+	</a>
+</div>
+
+<style>
+	.contact-me {
+		align-content: flex-start;
+		align-items: flex-start;
+		background-color: var(--dark-06);
+		border-radius: 30px;
+		display: flex;
+		flex: none;
+		flex-direction: column;
+		flex-wrap: nowrap;
+		height: min-content;
+		justify-content: flex-start;
+		max-width: 800px;
+		overflow: hidden;
+		padding: 0;
+		width: 100%;
+		position: relative;
+	}
+	.contact-me-link {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		padding: 24px;
+	}
+	.contact-me-text {
+		font-size: 174px;
+		white-space: nowrap;
+	}
+	.over {
+		flex: none;
+		position: absolute;
+		inset: 0;
+	}
+	.over-link {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: rgba(15, 15, 15, 0.92);
+		opacity: 0;
+		transition: opacity 0.3s ease-out;
+	}
+	.contact-me:hover .over-link {
+		opacity: 1;
+		transition: opacity 0.3s ease-out;
+	}
+	.contact-me:hover .over-button {
+		transform: none;
+		transition: all 0.3s ease-out;
+	}
+	.over-button {
+		width: 120px;
+		height: 120px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-wrap: nowrap;
+		gap: 6px;
+		padding: 0 24px;
+		background-color: var(--purple-90);
+		border-radius: 60px;
+		transform: rotateZ(90deg);
+		transform-origin: 50% 50% 0px;
+		transition: all 0.3s ease-out;
+	}
+</style>

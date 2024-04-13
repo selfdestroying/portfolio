@@ -1,7 +1,10 @@
 ---
+import Diamond from './Icons/Diamond.astro'
 import MapPin from './Icons/MapPin.astro'
+import PencilLine from './Icons/PencilLine.astro'
+import StackSimple from './Icons/StackSimple.astro'
 
-type Icons = 'map-pin'
+type Icons = 'map-pin' | 'diamond' | 'pencilline' | 'stacksimple'
 interface Props {
 	title: string
 	icon: Icons
@@ -9,6 +12,9 @@ interface Props {
 const { title, icon } = Astro.props
 const iconMap = {
 	'map-pin': MapPin,
+	diamond: Diamond,
+	pencilline: PencilLine,
+	stacksimple: StackSimple,
 }
 const IconComponent = iconMap[icon]
 ---
@@ -22,14 +28,24 @@ const IconComponent = iconMap[icon]
 
 <style>
 	.section-title {
+		width: 100%;
 		display: flex;
 		flex-direction: row;
 		justify-content: flex-start;
 		align-items: center;
 		gap: 8px;
-	}
-	.section-title-icon {
+		height: 21px;
+		height: min-content;
 		color: var(--green-40);
 		font-weight: 500;
+	}
+	.section-title-icon {
+		height: 21px;
+		width: 21px;
+		color: var(--green-40);
+		font-weight: 500;
+	}
+	.section-title-text {
+		height: 100%;
 	}
 </style>

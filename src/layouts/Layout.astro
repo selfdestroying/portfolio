@@ -1,6 +1,17 @@
 ---
+import Footer from '../components/Footer.astro'
+import NavBar from '../components/NavBar.astro'
+import TopHeader from '../components/TopHeader.astro'
+
 interface Props {
-	title: string
+	title:
+		| 'Home'
+		| 'About'
+		| 'Projects'
+		| 'Stack'
+		| 'Contact'
+		| '404'
+		| 'Licensing'
 }
 
 const { title } = Astro.props
@@ -20,12 +31,22 @@ const { title } = Astro.props
 			href='https://fonts.googleapis.com/css2?family=Bai+Jamjuree:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap'
 			rel='stylesheet'
 		/>
+		<link
+			rel='stylesheet'
+			href='https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css'
+		/>
 		<title>{title}</title>
 	</head>
 	<body>
-		<slot />
+		<div class='container'>
+			<TopHeader />
+			<slot />
+			<Footer />
+			<NavBar selected={title} />
+		</div>
 	</body>
 </html>
+
 <style is:global>
 	:root {
 		--purple-90: #d6ccff;
@@ -70,6 +91,29 @@ const { title } = Astro.props
 	a {
 		color: var(--light-90);
 		text-decoration: none;
+	}
+	.container {
+		min-height: 100vh;
+		width: auto;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: flex-start;
+		flex-wrap: nowrap;
+		gap: 24px;
+		background-color: var(--dark-02);
+		padding: 24px 24px 102px;
+		overflow: hidden;
+	}
+	.section {
+		max-width: 800px;
+		width: 100%;
+		background-color: var(--dark-06);
+		border-radius: 30px;
+		display: flex;
+		flex-direction: column;
+		padding: 24px;
+		gap: 24px;
 	}
 	@keyframes fade-in {
 		0% {

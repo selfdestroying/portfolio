@@ -1,0 +1,64 @@
+---
+import Button from '../components/Button.astro'
+import Layout from '../layouts/Layout.astro'
+---
+
+<Layout title='404'>
+	<div class='section error'>
+		<div class='error-container'>
+			<h1 class='back'>404</h1>
+			<div class='error-message'>
+				<p>OOPS!</p>
+				<p>The page you are looking for wasn't found!</p>
+			</div>
+			<div>
+				<Button text='Go Back Home' link='/' reverse icon='arrow-left' />
+			</div>
+		</div>
+	</div>
+</Layout>
+
+<style>
+	.error {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		flex: 1 0 0px;
+		overflow: hidden;
+		@media screen and (max-width: 390px) {
+			height: 480px;
+			flex: none;
+		}
+	}
+	.error-container {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		gap: 24px;
+		padding: 24px;
+	}
+	.error-container div {
+		z-index: 2;
+	}
+	.back {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		font-size: 360px;
+		line-height: 1.2em;
+		font-weight: 500;
+		color: var(--dark-10);
+		transform: translate(-50%, -50%);
+		z-index: 1;
+		@media screen and (max-width: 390px) {
+			position: relative;
+			left: unset;
+			top: unset;
+			transform: none;
+			font-size: 120px;
+		}
+	}
+</style>

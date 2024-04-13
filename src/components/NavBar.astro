@@ -1,13 +1,37 @@
 ---
 import MenuButton from './MenuButton.astro'
+type Icons = 'house' | 'user' | 'pencilline' | 'stacksimple' | 'paperplanetilt'
+type Selected = 'Home' | 'About' | 'Projects' | 'Stack' | 'Contact'
+type MenuButtons = {
+	[key in Selected]: Icons
+}
+interface Props {
+	selected?: Selected | '404' | 'Licensing'
+}
+const { selected = 0 } = Astro.props
+
+const menuButtons: MenuButtons = {
+	Home: 'house',
+	About: 'user',
+	Projects: 'pencilline',
+	Stack: 'stacksimple',
+	Contact: 'paperplanetilt',
+}
 ---
 
 <div class='navbar'>
-	<MenuButton />
-	<MenuButton selected={true} />
-	<MenuButton />
-	<MenuButton />
-	<MenuButton />
+	{
+		Object.entries(menuButtons).map(
+			([key, value]) =>
+				!['404', 'Licensing'].includes(key) && (
+					<MenuButton
+						selected={key === selected}
+						icon={value}
+						link={key === 'Home' ? '/' : key.toLowerCase()}
+					/>
+				)
+		)
+	}
 </div>
 
 <style>
@@ -22,5 +46,7 @@ import MenuButton from './MenuButton.astro'
 		border-radius: 30px;
 		background-color: rgba(15, 15, 15, 0.6);
 		backdrop-filter: blur(9px);
+		position: fixed;
+		bottom: 12px;
 	}
 </style>

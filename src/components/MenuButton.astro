@@ -1,17 +1,54 @@
 ---
+import GitHub from './Icons/GitHub.astro'
 import House from './Icons/House.astro'
+import Instagram from './Icons/Instagram.astro'
+import PaperPlateTilt from './Icons/PaperPlateTilt.astro'
+import PencilLine from './Icons/PencilLine.astro'
+import StackSimple from './Icons/StackSimple.astro'
+import Telegram from './Icons/Telegram.astro'
+import User from './Icons/User.astro'
+type Icons =
+	| 'github'
+	| 'telegram'
+	| 'instagram'
+	| 'house'
+	| 'house'
+	| 'user'
+	| 'pencilline'
+	| 'stacksimple'
+	| 'paperplanetilt'
 interface Props {
 	selected?: boolean
 	variant?: 'default' | 'link' | 'social'
 	text?: string
+	icon: Icons
+	link?: string
+	target?: '_blank' | '_self'
 }
-const { selected = false, variant = 'default', text = '' } = Astro.props
-const iconSize = variant === 'link' ? 16 : 24
+const {
+	selected = false,
+	variant = 'default',
+	text = '',
+	icon,
+	link = '#',
+	target = '_self',
+} = Astro.props
+const iconMap = {
+	github: GitHub,
+	telegram: Telegram,
+	instagram: Instagram,
+	house: House,
+	user: User,
+	pencilline: PencilLine,
+	stacksimple: StackSimple,
+	paperplanetilt: PaperPlateTilt,
+}
+const IconComponent = iconMap[icon]
 ---
 
 <div class=`menu-button ${variant}`>
-	<a href='#' class=`menu-button-link ${variant}`>
-		<House class:list=`menu-button-icon ${variant}` />
+	<a target={target} href={link} class=`menu-button-link ${variant}`>
+		<IconComponent class=`menu-button-icon ${variant}` />
 		{selected && <div class='dot' />}
 		{variant === 'link' && <p class='menu-button-text'>{text}</p>}
 	</a>
@@ -21,7 +58,7 @@ const iconSize = variant === 'link' ? 16 : 24
 	.menu-button-icon {
 		width: 24px;
 		height: 24px;
-		@media screen and (max-width: 800px) {
+		@media screen and (max-width: 390px) {
 			width: 16px;
 			height: 16px;
 		}
@@ -30,10 +67,14 @@ const iconSize = variant === 'link' ? 16 : 24
 		width: 16px;
 		height: 16px;
 	}
+	.menu-button-icon.link {
+		width: 16px;
+		height: 16px;
+	}
 	.menu-button {
 		width: 54px;
 		height: 54px;
-		@media screen and (max-width: 800px) {
+		@media screen and (max-width: 390px) {
 			width: 42px;
 			height: 42px;
 			border-radius: 14px;
@@ -46,7 +87,7 @@ const iconSize = variant === 'link' ? 16 : 24
 		border-radius: 18px;
 	}
 	.menu-button.link {
-		width: 152px;
+		width: 100%;
 		height: 42px;
 		padding: 0 13px;
 		border-radius: 14px;
@@ -67,7 +108,7 @@ const iconSize = variant === 'link' ? 16 : 24
 		justify-content: center;
 		flex-wrap: nowrap;
 		gap: 8px;
-		@media screen and (max-width: 800px) {
+		@media screen and (max-width: 390px) {
 			gap: 6px;
 		}
 		border-radius: 18px;
@@ -85,7 +126,7 @@ const iconSize = variant === 'link' ? 16 : 24
 		height: 2px;
 		background-color: var(--purple-80);
 		border-radius: 3px;
-		@media screen and (max-width: 800px) {
+		@media screen and (max-width: 390px) {
 			border-radius: 6px;
 		}
 	}
