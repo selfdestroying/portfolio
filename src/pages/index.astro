@@ -1,4 +1,5 @@
 ---
+import { getCollection } from 'astro:content'
 import Button from '../components/Button.astro'
 import ContactSection from '../components/ContactSection.astro'
 import Globe from '../components/Old/Globe'
@@ -6,10 +7,12 @@ import ProjectCard from '../components/ProjectCard.astro'
 import SectionTitle from '../components/SectionTitle.astro'
 import SkillCard from '../components/SkillCard.astro'
 import SkillsTicker from '../components/SkillsTicker.astro'
-import Layout from '../layouts/Layout.astro'
+import PageLayout from '../layouts/PageLayout.astro'
+
+const allProjects = await getCollection('projects')
 ---
 
-<Layout title='Home'>
+<PageLayout title='Home'>
 	<div class='section hero'>
 		<div class='hero-text'>
 			<h1 class='hero-title'>Hello there! Leon here!</h1>
@@ -25,7 +28,7 @@ import Layout from '../layouts/Layout.astro'
 	</div>
 	<div class='columns'>
 		<div class='section location'>
-			<SectionTitle title='Bucharest, Romania' icon='map-pin' />
+			<SectionTitle title='St. Petersburg, Russia' icon='mappin' />
 			<div class='globe'>
 				<Globe client:only />
 			</div>
@@ -38,8 +41,16 @@ import Layout from '../layouts/Layout.astro'
 	<div class='section projects'>
 		<SectionTitle title='Projects' icon='pencilline' />
 		<div class='projects-list'>
-			<ProjectCard />
-			<ProjectCard />
+			{
+				allProjects.map(project => (
+					<ProjectCard
+						title={project.data.title}
+						url={project.slug}
+						tags={project.data.tags}
+						imageUrl={project.data.image.url}
+					/>
+				))
+			}
 		</div>
 		<Button
 			text='All projects'
@@ -75,7 +86,7 @@ import Layout from '../layouts/Layout.astro'
 		<Button text='Full Stack' link='stack' theme='dark' icon='right-arrow' />
 	</div>
 	<ContactSection />
-</Layout>
+</PageLayout>
 
 <style>
 	.columns {

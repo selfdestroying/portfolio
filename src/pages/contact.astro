@@ -1,21 +1,31 @@
 ---
+import Copy from '../components/Icons/Copy.astro'
 import MenuButton from '../components/MenuButton.astro'
 import SectionTitle from '../components/SectionTitle.astro'
-import Layout from '../layouts/Layout.astro'
+import PageLayout from '../layouts/PageLayout.astro'
 ---
 
-<Layout title='Contact'>
+<PageLayout title='Contact'>
 	<div class='section hero'>
 		<h1>Let's Connect!</h1>
 	</div>
 	<div class='section contact'>
-		<SectionTitle title='Contact' icon='map-pin' />
+		<SectionTitle title='Contact' icon='user' />
 		<div class='contact-container'>
-			<MenuButton
-				text='selfdestroying.work@gmail.com'
-				variant='link'
-				icon='instagram'
-			/>
+			<div class='email'>
+				<MenuButton
+					text='selfdestroying.work@gmail.com'
+					variant='link'
+					icon='at'
+					link='mailto:selfdestroying.work@gmail.com'
+				/>
+				<button
+					class='copy-button'
+					onclick='Clipboard.copy("selfdestroying.work@gmail.com")'
+				>
+					<Copy size={16} />
+				</button>
+			</div>
 			<MenuButton
 				text='Telegram'
 				variant='link'
@@ -33,7 +43,7 @@ import Layout from '../layouts/Layout.astro'
 		</div>
 	</div>
 	<div class='section contact-form'>
-		<SectionTitle title='Send Me a Message' icon='map-pin' />
+		<SectionTitle title='Send Me a Message' icon='paperplanetilt' />
 
 		<form action='POST' class='contact-form-container'>
 			<div class='sender-info'>
@@ -44,7 +54,59 @@ import Layout from '../layouts/Layout.astro'
 			<button type='submit'>Send Message</button>
 		</form>
 	</div>
-</Layout>
+</PageLayout>
+<script is:inline>
+	window.Clipboard = (function (window, document, navigator) {
+		var textArea, copy
+		const button = document.querySelector('.copy-button')
+
+		function isOS() {
+			return navigator.userAgent.match(/ipad|iphone/i)
+		}
+
+		function createTextArea(text) {
+			textArea = document.createElement('textArea')
+			textArea.style.position = 'absolute'
+			textArea.style.fontSize = '17px'
+			textArea.style.top = '50%'
+			textArea.style.left = '50%'
+			textArea.value = text
+			document.body.appendChild(textArea)
+		}
+
+		function selectText() {
+			var range, selection
+
+			if (isOS()) {
+				range = document.createRange()
+				range.selectNodeContents(textArea)
+				selection = window.getSelection()
+				selection.removeAllRanges()
+				selection.addRange(range)
+				textArea.setSelectionRange(0, 999999)
+			} else {
+				textArea.select()
+			}
+		}
+
+		function copyToClipboard() {
+			document.execCommand('copy')
+			document.body.removeChild(textArea)
+		}
+
+		copy = function (text) {
+			createTextArea(text)
+			selectText()
+			copyToClipboard()
+			button.classList.add('copied')
+			setTimeout(() => button.classList.remove('copied'), 1000)
+		}
+
+		return {
+			copy: copy,
+		}
+	})(window, document, navigator)
+</script>
 
 <style>
 	.contact-container {
@@ -124,5 +186,25 @@ import Layout from '../layouts/Layout.astro'
 	button:hover {
 		opacity: 0.8;
 		transition: all 0.3s ease;
+	}
+	.email {
+		width: 100%;
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		gap: 8px;
+	}
+	.copy-button {
+		width: 42px;
+		height: 42px;
+		background-color: var(--dark-10);
+		color: var(--purple-80);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.copy-button.copied {
+		background-color: var(--green-40);
+		color: var(--dark-10);
 	}
 </style>

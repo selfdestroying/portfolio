@@ -1,0 +1,26 @@
+---
+import Footer from '../components/Footer.astro'
+import NavBar from '../components/NavBar.astro'
+import TopHeader from '../components/TopHeader.astro'
+import Layout from './Layout.astro'
+
+interface Props {
+	title:
+		| 'Home'
+		| 'About'
+		| 'Projects'
+		| 'Stack'
+		| 'Contact'
+		| '404'
+		| 'Licensing'
+}
+
+const { title } = Astro.props
+---
+
+<Layout title={title}>
+	<TopHeader />
+	<slot />
+	<Footer />
+	<NavBar selected={title} />
+</Layout>

@@ -1,0 +1,132 @@
+---
+import Button from '../components/Button.astro'
+import ContactSection from '../components/ContactSection.astro'
+import Footer from '../components/Footer.astro'
+import Buildings from '../components/Icons/Buildings.astro'
+import Timer from '../components/Icons/Timer.astro'
+import NavBar from '../components/NavBar.astro'
+import Pill from '../components/Pill.astro'
+import Layout from './Layout.astro'
+const { frontmatter } = Astro.props
+---
+
+<Layout title={frontmatter.title}>
+	<div class='section hero'>
+		<div class='hero-container'>
+			<div class='back'>
+				<Button
+					text='Back to Projects'
+					icon='arrow-left'
+					theme='dark'
+					reverse
+					link='/projects'
+				/>
+			</div>
+			<div class='preview'>
+				<Button
+					text='Preview'
+					icon='eye'
+					theme='dark'
+					link={frontmatter.previewUrl}
+					newTab
+				/>
+			</div>
+		</div>
+	</div>
+	<div class='section hero'>
+		<h1>{frontmatter.title}</h1>
+	</div>
+	<div class='columns'>
+		<div class='section client'>
+			<Buildings size={16} />
+			<p class='shadow'>Client:</p>
+			<p class='answer'>{frontmatter.client}</p>
+		</div>
+		<div class='section duration'>
+			<Timer size={16} />
+			<p class='shadow'>Duration:</p>
+			<p class='answer'>{frontmatter.duration}</p>
+		</div>
+	</div>
+	<div class='section content'>
+		<div class='tags'>
+			{frontmatter.tags.map((tag: string) => <Pill title={tag} />)}
+		</div>
+		<div class='image-container'>
+			<img src={frontmatter.image.url} alt='' />
+		</div>
+		<div class='description'>
+			<slot />
+		</div>
+	</div>
+	<ContactSection />
+	<Footer />
+	<NavBar />
+</Layout>
+
+<style>
+	.hero-container {
+		display: flex;
+		@media screen and (max-width: 800px) {
+			flex-direction: column;
+			gap: 12px;
+		}
+		justify-content: space-between;
+	}
+	.client,
+	.duration {
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: center;
+		gap: 8px;
+		color: var(--green-40);
+	}
+	.shadow {
+		font-size: 16px;
+		line-height: 1.4em;
+		font-weight: 300;
+		color: var(--light-60);
+	}
+	.answer {
+		font-size: 16px;
+		line-height: 1.4em;
+		font-weight: 300;
+		color: var(--light-90);
+	}
+	.tags {
+		width: 100%;
+		display: flex;
+		@media screen and (max-width: 390px) {
+			flex-wrap: wrap;
+		}
+		justify-content: flex-start;
+		align-items: center;
+		gap: 12px;
+	}
+	.image-container {
+		width: 100%;
+		height: auto;
+		overflow: hidden;
+		display: flex;
+		align-items: center;
+		border-radius: 12px;
+		flex: 0 0 auto;
+		flex-flow: row;
+		place-content: center;
+		aspect-ratio: 1.5 / 1;
+	}
+	.image-container img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center top;
+	}
+	.description {
+		font-size: 16px;
+		line-height: 1.4em;
+		font-weight: 300;
+		color: var(--light-60);
+	}
+</style>

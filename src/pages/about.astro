@@ -4,10 +4,10 @@ import ContactSection from '../components/ContactSection.astro'
 import RoadCard from '../components/RoadCard.astro'
 import SectionTitle from '../components/SectionTitle.astro'
 import Stack from '../components/SkillCard.astro'
-import Layout from '../layouts/Layout.astro'
+import PageLayout from '../layouts/PageLayout.astro'
 ---
 
-<Layout title='About'>
+<PageLayout title='About'>
 	<div class='section hero'>
 		<div class='hero-container'>
 			<h1>Get to Know Me Better!</h1>
@@ -39,14 +39,14 @@ import Layout from '../layouts/Layout.astro'
 		</div>
 	</div>
 	<div class='section education'>
-		<SectionTitle title='Education' icon='map-pin' />
+		<SectionTitle title='Education' icon='graduationcap' />
 		<div class='education-container'>
 			<RoadCard />
 			<RoadCard state='end' />
 		</div>
 	</div>
 	<div class='section experience'>
-		<SectionTitle title='Experience' icon='map-pin' />
+		<SectionTitle title='Experience' icon='globe' />
 		<div class='education-container'>
 			<RoadCard />
 			<RoadCard />
@@ -54,7 +54,7 @@ import Layout from '../layouts/Layout.astro'
 		</div>
 	</div>
 	<div class='section skills'>
-		<SectionTitle title='Stack' icon='map-pin' />
+		<SectionTitle title='Stack' icon='stacksimple' />
 		<div class='stacks'>
 			<Stack>
 				<h3 slot='title' class='stack-title-text'>Framer</h3>
@@ -90,7 +90,7 @@ import Layout from '../layouts/Layout.astro'
 		</div>
 	</div>
 	<ContactSection />
-</Layout>
+</PageLayout>
 
 <style>
 	.hero-container {

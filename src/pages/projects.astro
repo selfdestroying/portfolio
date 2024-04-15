@@ -1,9 +1,11 @@
 ---
+import { getCollection } from 'astro:content'
 import ProjectCard from '../components/ProjectCard.astro'
-import Layout from '../layouts/Layout.astro'
+import PageLayout from '../layouts/PageLayout.astro'
+const allProjects = await getCollection('projects')
 ---
 
-<Layout title='Projects'>
+<PageLayout title='Projects'>
 	<div class='section hero'>
 		<div class='hero-container'>
 			<h1>My Projects</h1>
@@ -17,15 +19,19 @@ import Layout from '../layouts/Layout.astro'
 	</div>
 	<div class='section projects'>
 		<div class='projects-container'>
-			<ProjectCard />
-			<ProjectCard />
-			<ProjectCard />
-			<ProjectCard />
-			<ProjectCard />
-			<ProjectCard />
+			{
+				allProjects.map(project => (
+					<ProjectCard
+						title={project.data.title}
+						url={project.slug}
+						tags={project.data.tags}
+						imageUrl={project.data.image.url}
+					/>
+				))
+			}
 		</div>
 	</div>
-</Layout>
+</PageLayout>
 
 <style>
 	.hero-container {

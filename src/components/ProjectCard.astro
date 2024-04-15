@@ -1,23 +1,24 @@
 ---
 import Pill from './Pill.astro'
+interface Props {
+	title: string
+	url: string
+	tags: string[]
+	imageUrl: string
+}
+const { title, url, tags, imageUrl } = Astro.props
 ---
 
 <div class='project-card'>
-	<a href='#' class='project-link'>
+	<a href={`/projects/${url}/`} class='project-link'>
 		<div class='project-image'>
-			<img
-				src='https://framerusercontent.com/images/2h3F2FeE659yKKEV2amJa9j5IYI.svg?scale-down-to=1024'
-				alt=''
-				srcset=''
-			/>
+			<img src={imageUrl} alt='' />
 		</div>
 		<div class='project-details'>
 			<div class='project-pills'>
-				<Pill title='Category 1' />
-				<Pill title='Category 2' />
-				<Pill title='Category 3' />
+				{tags.map(tag => <Pill title={tag} />)}
 			</div>
-			<h3 class='project-title'>Title</h3>
+			<h3 class='project-title'>{title}</h3>
 		</div>
 	</a>
 </div>

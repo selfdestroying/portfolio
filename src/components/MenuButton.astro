@@ -1,9 +1,13 @@
 ---
+import At from './Icons/At.astro'
+import Framer from './Icons/Framer.astro'
 import GitHub from './Icons/GitHub.astro'
+import Google from './Icons/Google.astro'
 import House from './Icons/House.astro'
 import Instagram from './Icons/Instagram.astro'
 import PaperPlateTilt from './Icons/PaperPlateTilt.astro'
 import PencilLine from './Icons/PencilLine.astro'
+import Phosphor from './Icons/Phosphor.astro'
 import StackSimple from './Icons/StackSimple.astro'
 import Telegram from './Icons/Telegram.astro'
 import User from './Icons/User.astro'
@@ -12,11 +16,14 @@ type Icons =
 	| 'telegram'
 	| 'instagram'
 	| 'house'
-	| 'house'
 	| 'user'
 	| 'pencilline'
 	| 'stacksimple'
 	| 'paperplanetilt'
+	| 'at'
+	| 'framer'
+	| 'phosphor'
+	| 'google'
 interface Props {
 	selected?: boolean
 	variant?: 'default' | 'link' | 'social'
@@ -42,13 +49,19 @@ const iconMap = {
 	pencilline: PencilLine,
 	stacksimple: StackSimple,
 	paperplanetilt: PaperPlateTilt,
+	at: At,
+	framer: Framer,
+	phosphor: Phosphor,
+	google: Google,
 }
 const IconComponent = iconMap[icon]
 ---
 
 <div class=`menu-button ${variant}`>
 	<a target={target} href={link} class=`menu-button-link ${variant}`>
-		<IconComponent class=`menu-button-icon ${variant}` />
+		<div style='display: flex;'>
+			<IconComponent class=`menu-button-icon ${variant}` />
+		</div>
 		{selected && <div class='dot' />}
 		{variant === 'link' && <p class='menu-button-text'>{text}</p>}
 	</a>
@@ -85,11 +98,11 @@ const IconComponent = iconMap[icon]
 		flex-wrap: nowrap;
 		background-color: var(--dark-10);
 		border-radius: 18px;
+		overflow: hidden;
 	}
 	.menu-button.link {
 		width: 100%;
 		height: 42px;
-		padding: 0 13px;
 		border-radius: 14px;
 	}
 
@@ -113,6 +126,7 @@ const IconComponent = iconMap[icon]
 		}
 		border-radius: 18px;
 		color: var(--purple-80);
+		padding: 0 13px;
 	}
 
 	.menu-button-link.link {

@@ -1,19 +1,7 @@
 ---
-import Footer from '../components/Footer.astro'
-import NavBar from '../components/NavBar.astro'
-import TopHeader from '../components/TopHeader.astro'
-
 interface Props {
-	title:
-		| 'Home'
-		| 'About'
-		| 'Projects'
-		| 'Stack'
-		| 'Contact'
-		| '404'
-		| 'Licensing'
+	title: string
 }
-
 const { title } = Astro.props
 ---
 
@@ -23,6 +11,10 @@ const { title } = Astro.props
 		<meta charset='UTF-8' />
 		<meta name='description' content='Astro description' />
 		<meta name='viewport' content='width=device-width' />
+		<!-- <meta
+			name='viewport'
+			content='width=device-width, initial-scale=1, maximum-scale=1'
+		/> -->
 		<link rel='icon' type='image/svg+xml' href='/favicon.svg' />
 		<meta name='generator' content={Astro.generator} />
 		<link rel='preconnect' href='https://fonts.googleapis.com' />
@@ -36,96 +28,123 @@ const { title } = Astro.props
 			href='https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css'
 		/>
 		<title>{title}</title>
+		<!-- <ViewTransitions /> -->
 	</head>
 	<body>
 		<div class='container'>
-			<TopHeader />
 			<slot />
-			<Footer />
-			<NavBar selected={title} />
 		</div>
+		<style is:global>
+			:root {
+				--purple-90: #d6ccff;
+				--purple-80: #ac99ff;
+				--green-40: #00cc96;
+				--light-90: #e6e6e6;
+				--light-60: #999999;
+				--dark-10: #1a1a1a;
+				--dark-06: #0f0f0f;
+				--dark-02: #050505;
+				--spring-easing: linear(
+					0,
+					0.00646 1.17%,
+					0.02572 2.41%,
+					0.10512 5.241%,
+					0.56499 16.262%,
+					0.75608 21.812%,
+					0.82886 24.552%,
+					0.88872 27.353%,
+					0.9367 30.263%,
+					0.97364 33.333%,
+					0.99703 36.124%,
+					1.0136 39.144%,
+					1.02378 42.464%,
+					1.02815 46.265%,
+					1.02625 51.815%,
+					1.00317 74.817%,
+					0.99927
+				);
+				--spring-duration: 0.5s;
+			}
+			* {
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+				font-family:
+					Bai Jamjuree,
+					sans-serif;
+			}
+			body {
+				background-color: var(--dark-02);
+				color: var(--light-90);
+			}
+			h1 {
+				font-weight: 500;
+				color: var(--light-90);
+				font-size: 36px;
+				line-height: 1.2em;
+			}
+			h2 {
+				font-weight: 500;
+				color: var(--light-90);
+				font-size: 18px;
+				line-height: 1.2em;
+			}
+			h3 {
+				font-weight: 400;
+				color: var(--light-90);
+				font-size: 16px;
+				line-height: 1.4em;
+			}
+			a {
+				color: var(--light-90);
+				text-decoration: none;
+			}
+			.container {
+				min-height: 100vh;
+				width: auto;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: flex-start;
+				flex-wrap: nowrap;
+				gap: 24px;
+				background-color: var(--dark-02);
+				padding: 24px 24px 102px;
+				overflow: hidden;
+			}
+			.section {
+				max-width: 800px;
+				width: 100%;
+				background-color: var(--dark-06);
+				border-radius: 30px;
+				display: flex;
+				flex-direction: column;
+				padding: 24px;
+				gap: 24px;
+				animation: var(--spring-duration) fadein var(--spring-easing);
+			}
+			.columns {
+				width: 100%;
+				max-width: 800px;
+				display: flex;
+				flex-direction: row;
+				@media screen and (max-width: 800px) {
+					flex-direction: column;
+				}
+				justify-content: center;
+				align-items: center;
+				gap: 24px;
+			}
+			@keyframes fadein {
+				0% {
+					transform: scale(0.8);
+					opacity: 0;
+				}
+				100% {
+					transform: scale(1);
+					opacity: 1;
+				}
+			}
+		</style>
 	</body>
 </html>
-
-<style is:global>
-	:root {
-		--purple-90: #d6ccff;
-		--purple-80: #ac99ff;
-		--green-40: #00cc96;
-		--light-90: #e6e6e6;
-		--light-60: #999999;
-		--dark-10: #1a1a1a;
-		--dark-06: #0f0f0f;
-		--dark-02: #050505;
-	}
-	* {
-		box-sizing: border-box;
-		margin: 0;
-		padding: 0;
-		font-family:
-			Bai Jamjuree,
-			sans-serif;
-	}
-	body {
-		background-color: var(--dark-02);
-		color: var(--light-90);
-	}
-	h1 {
-		font-weight: 500;
-		color: var(--light-90);
-		font-size: 36px;
-		line-height: 1.2em;
-	}
-	h2 {
-		font-weight: 500;
-		color: var(--light-90);
-		font-size: 18px;
-		line-height: 1.2em;
-	}
-	h3 {
-		font-weight: 400;
-		color: var(--light-90);
-		font-size: 16px;
-		line-height: 1.4em;
-	}
-	a {
-		color: var(--light-90);
-		text-decoration: none;
-	}
-	.container {
-		min-height: 100vh;
-		width: auto;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: flex-start;
-		flex-wrap: nowrap;
-		gap: 24px;
-		background-color: var(--dark-02);
-		padding: 24px 24px 102px;
-		overflow: hidden;
-	}
-	.section {
-		max-width: 800px;
-		width: 100%;
-		background-color: var(--dark-06);
-		border-radius: 30px;
-		display: flex;
-		flex-direction: column;
-		padding: 24px;
-		gap: 24px;
-	}
-	@keyframes fade-in {
-		0% {
-			transform: scale(0);
-			opacity: 0;
-		}
-		80% {
-			transform: scale(1.05);
-		}
-		100% {
-			transform: scale(1);
-			opacity: 1;
-		}
-	}
-</style>

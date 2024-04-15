@@ -3,26 +3,26 @@ import { useEffect, useRef } from 'react'
 import { useSpring } from 'react-spring'
 
 export default function Cobe() {
-	const canvasRef = useRef()
-	const pointerInteracting = useRef(null)
+	const canvasRef = useRef<HTMLCanvasElement>(null)
+	const pointerInteracting = useRef<number | null>(null)
 	const pointerInteractionMovement = useRef(0)
 	const [{ r }, api] = useSpring(() => ({
 		r: 4,
 		config: { mass: 1, tension: 280, friction: 40, precision: 0.001 },
 	}))
 	useEffect(() => {
-		let width = 800
+		let width = 0
 		const onResize = () =>
 			canvasRef.current && (width = canvasRef.current.offsetWidth)
 		window.addEventListener('resize', onResize)
 		onResize()
-		const globe = createGlobe(canvasRef.current, {
+		const globe = createGlobe(canvasRef.current!, {
 			scale: 1.2,
 			offset: [0, 130],
 			devicePixelRatio: 2,
 			width: width * 2,
 			height: width * 2,
-			phi: 4.26,
+			phi: 5,
 			theta: 0.3,
 			dark: 1,
 			diffuse: 2,
@@ -39,13 +39,12 @@ export default function Cobe() {
 			],
 			onRender: state => {
 				state.phi = r.get()
-
 				state.width = width * 2
 				state.height = width * 2
 			},
 		})
 
-		setTimeout(() => (canvasRef.current.style.opacity = '1'))
+		setTimeout(() => (canvasRef.current!.style.opacity = '1'))
 
 		return () => {
 			globe.destroy()
@@ -68,28 +67,28 @@ export default function Cobe() {
 				onPointerDown={e => {
 					pointerInteracting.current =
 						e.clientX - pointerInteractionMovement.current
-					canvasRef.current.style.cursor = 'grabbing'
+					canvasRef.current!.style.cursor = 'grabbing'
 				}}
 				onPointerUp={() => {
 					pointerInteracting.current = null
-					canvasRef.current.style.cursor = 'grab'
+					canvasRef.current!.style.cursor = 'grab'
 				}}
 				onPointerOut={() => {
 					pointerInteracting.current = null
-					canvasRef.current.style.cursor = 'grab'
+					canvasRef.current!.style.cursor = 'grab'
 				}}
 				onMouseMove={e => {
 					if (pointerInteracting.current !== null) {
 						const delta = e.clientX - pointerInteracting.current
 						pointerInteractionMovement.current = delta
-						api.start({ r: delta / 200 })
+						api.start({ r: 4 + delta / 200 })
 					}
 				}}
 				onTouchMove={e => {
 					if (pointerInteracting.current !== null && e.touches[0]) {
 						const delta = e.touches[0].clientX - pointerInteracting.current
 						pointerInteractionMovement.current = delta
-						api.start({ r: delta / 100 })
+						api.start({ r: 4 + delta / 100 })
 					}
 				}}
 				style={{

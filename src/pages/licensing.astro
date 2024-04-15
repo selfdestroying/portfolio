@@ -2,41 +2,41 @@
 import ContactSection from '../components/ContactSection.astro'
 import MenuButton from '../components/MenuButton.astro'
 import SectionTitle from '../components/SectionTitle.astro'
-import Layout from '../layouts/Layout.astro'
+import PageLayout from '../layouts/PageLayout.astro'
 ---
 
-<Layout title='Licensing'>
+<PageLayout title='Licensing'>
 	<div class='section hero'>
 		<h1>Licensing</h1>
 	</div>
 	<div class='section links'>
-		<SectionTitle title='Contact' icon='map-pin' />
+		<SectionTitle title='Contact' icon='user' />
 		<div class='links-container'>
 			<MenuButton
 				text='Framer - Template'
 				variant='link'
-				icon='instagram'
+				icon='framer'
 				link='https://www.framer.com/templates/darko/'
 				target='_blank'
 			/>
 			<MenuButton
 				text='Phosphor - Icons'
 				variant='link'
-				icon='telegram'
+				icon='phosphor'
 				link='https://phosphoricons.com/'
 				target='_blank'
 			/>
 			<MenuButton
 				text='Google - Typography'
 				variant='link'
-				icon='instagram'
+				icon='google'
 				link='https://www.instagram.com/selfdestroyingq/'
 				target='_blank'
 			/>
 		</div>
 	</div>
 	<ContactSection />
-</Layout>
+</PageLayout>
 
 <style>
 	.links-container {

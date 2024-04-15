@@ -27,7 +27,7 @@ const menuButtons: MenuButtons = {
 					<MenuButton
 						selected={key === selected}
 						icon={value}
-						link={key === 'Home' ? '/' : key.toLowerCase()}
+						link={key === 'Home' ? '/' : `/${key.toLowerCase()}`}
 					/>
 				)
 		)

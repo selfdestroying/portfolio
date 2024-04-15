@@ -1,20 +1,39 @@
 ---
+import At from './Icons/At.astro'
 import Diamond from './Icons/Diamond.astro'
+import Globe from './Icons/Globe.astro'
+import GraduationCap from './Icons/GraduationCap.astro'
 import MapPin from './Icons/MapPin.astro'
+import PaperPlateTilt from './Icons/PaperPlateTilt.astro'
 import PencilLine from './Icons/PencilLine.astro'
 import StackSimple from './Icons/StackSimple.astro'
+import User from './Icons/User.astro'
 
-type Icons = 'map-pin' | 'diamond' | 'pencilline' | 'stacksimple'
+type Icons =
+	| 'mappin'
+	| 'diamond'
+	| 'pencilline'
+	| 'stacksimple'
+	| 'globe'
+	| 'graduationcap'
+	| 'user'
+	| 'paperplanetilt'
+	| 'at'
 interface Props {
 	title: string
 	icon: Icons
 }
 const { title, icon } = Astro.props
 const iconMap = {
-	'map-pin': MapPin,
+	mappin: MapPin,
+	graduationcap: GraduationCap,
+	paperplanetilt: PaperPlateTilt,
 	diamond: Diamond,
 	pencilline: PencilLine,
 	stacksimple: StackSimple,
+	globe: Globe,
+	user: User,
+	at: At,
 }
 const IconComponent = iconMap[icon]
 ---
