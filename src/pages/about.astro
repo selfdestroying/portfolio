@@ -3,7 +3,7 @@ import Button from '../components/Button.astro'
 import ContactSection from '../components/ContactSection.astro'
 import RoadCard from '../components/RoadCard.astro'
 import SectionTitle from '../components/SectionTitle.astro'
-import Stack from '../components/SkillCard.astro'
+import SkillCard from '../components/SkillCard.astro'
 import PageLayout from '../layouts/PageLayout.astro'
 ---
 
@@ -13,27 +13,26 @@ import PageLayout from '../layouts/PageLayout.astro'
 			<h1>Get to Know Me Better!</h1>
 			<div class='hero-text'>
 				<p class='paragraph'>
-					Greetings! I'm Leon, and I thrive in the realm of web design, where
-					pixels meet purpose. Armed with a keen understanding of user
-					experience and a knack for translating ideas into visually captivating
-					interfaces, I embark on each project with an enthusiasm to create
-					something extraordinary.
+					Greetings! I'm Max, and whether you stumbled upon my corner of the web
+					intentionally or by chance, I'm excited to share with you my journey
+					in the world of development. I embark on each project with an
+					enthusiasm to create something extraordinary.
 				</p>
 				<p class='paragraph'><br /></p>
 				<p class='paragraph'>
-					My journey in web design began with a solid foundation in design
-					principles, honed during my years of formal education. I hold a degree
-					in Graphic Design from XYZ University, where I not only gained
-					technical expertise but also developed a deep appreciation for the
-					marriage of aesthetics and functionality.
+					My journey in programming started at school and has continued ever
+					since. I constantly practice my basic skills while also learning new
+					things and keeping up with trends in the industry.
 				</p>
 				<p class='paragraph'><br /></p>
 				<p class='paragraph'>
-					My tech stack is as diverse as the web itself, ranging from HTML5,
-					CSS3, and JavaScript to various design tools like Adobe Creative Suite
-					and Sketch. I believe in staying ahead of the curve, constantly
-					exploring emerging technologies and design trends to ensure that my
-					work remains both timeless and cutting-edge.
+					My technical stack started with Python. With it, I learned the basic
+					principles of programming. As a practice, I was engaged in Web
+					Scraping, creating Telegram bots, creating web apps with Flask and
+					Django and working with Databases (PostgreSQL, SQLite etc.). After
+					that, I switched my focus to web development. I learned JavaScript and
+					TypeScript, and began using React as my primary tool for creating
+					websites and web applications.
 				</p>
 			</div>
 		</div>
@@ -41,53 +40,46 @@ import PageLayout from '../layouts/PageLayout.astro'
 	<div class='section education'>
 		<SectionTitle title='Education' icon='graduationcap' />
 		<div class='education-container'>
-			<RoadCard />
-			<RoadCard state='end' />
+			<RoadCard
+				title="Incomplete Bachelor's degree"
+				description='Saint Petersburg Electrotechnical University "LETI"'
+				state='end'
+				link='https://etu.ru/en/university/'
+			/>
 		</div>
 	</div>
 	<div class='section experience'>
 		<SectionTitle title='Experience' icon='globe' />
 		<div class='education-container'>
-			<RoadCard />
-			<RoadCard />
-			<RoadCard state='end' />
+			<RoadCard
+				title='Teacher at a coding school'
+				description='Algoritmika, 2022 - present'
+				link='https://algoritmika.org'
+				state='end'
+			/>
 		</div>
 	</div>
-	<div class='section skills'>
+	<div class='section'>
 		<SectionTitle title='Stack' icon='stacksimple' />
 		<div class='stacks'>
-			<Stack>
-				<h3 slot='title' class='stack-title-text'>Framer</h3>
-				<p slot='role' class='role'>Web Design</p>
-				<p slot='description' class='description'>
-					Framer serves as my go-to tool for creating interactive prototypes. I
-					use it to bring designs to life, allowing stakeholders to experience
-					the user flow and interactions before development begins. It's
-					invaluable for refining the user experience.
-				</p>
-			</Stack>
-			<Stack>
-				<h3 slot='title' class='stack-title-text'>Framer</h3>
-				<p slot='role' class='role'>Web Design</p>
-				<p slot='description' class='description'>
-					Framer serves as my go-to tool for creating interactive prototypes. I
-					use it to bring designs to life, allowing stakeholders to experience
-					the user flow and interactions before development begins. It's
-					invaluable for refining the user experience.
-				</p>
-			</Stack>
-			<Stack isEnd>
-				<h3 slot='title' class='stack-title-text'>Framer</h3>
-				<p slot='role' class='role'>Web Design</p>
-				<p slot='description' class='description'>
-					Framer serves as my go-to tool for creating interactive prototypes. I
-					use it to bring designs to life, allowing stakeholders to experience
-					the user flow and interactions before development begins. It's
-					invaluable for refining the user experience.
-				</p>
-			</Stack>
-			<Button text='Full Stack' theme='dark' icon='right-arrow' />
+			<SkillCard icon='react' link='https://reactjs.org'>
+				<h3 slot='title' class='stack-title-text'>React</h3>
+			</SkillCard>
+			<SkillCard isEnd icon='nextjs' link='https://nextjs.org'>
+				<h3 slot='title' class='stack-title-text'>NextJS</h3>
+			</SkillCard>
+			<SkillCard isEnd icon='typescript' link='https://www.typescriptlang.org'>
+				<h3 slot='title' class='stack-title-text'>TypeScript</h3>
+			</SkillCard>
+			<SkillCard
+				isEnd
+				icon='javascript'
+				link='https://developer.mozilla.org/en-US/docs/Web/JavaScript'
+			>
+				<h3 slot='title' class='stack-title-text'>JavaScript</h3>
+			</SkillCard>
 		</div>
+		<Button text='Full Stack' link='stack' theme='dark' icon='right-arrow' />
 	</div>
 	<ContactSection />
 </PageLayout>
@@ -113,5 +105,19 @@ import PageLayout from '../layouts/PageLayout.astro'
 	}
 	.paragraph:not(:first-child) {
 		margin-top: 2px;
+	}
+	.stacks {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		gap: 16px;
+		@media screen and (max-width: 800px) {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(200px, 1fr));
+		}
+		@media screen and (max-width: 500px) {
+			grid-template-columns: repeat(1, minmax(200px, 1fr));
+		}
 	}
 </style>

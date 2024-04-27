@@ -52,9 +52,6 @@ const { frontmatter } = Astro.props
 		<div class='tags'>
 			{frontmatter.tags.map((tag: string) => <Pill title={tag} />)}
 		</div>
-		<div class='image-container'>
-			<img src={frontmatter.image.url} alt='' />
-		</div>
 		<div class='description'>
 			<slot />
 		</div>

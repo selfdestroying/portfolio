@@ -3,9 +3,12 @@ import Ticker from './Ticker.astro'
 ---
 
 <div class='skills-ticker'>
-	<Ticker speed={40} />
-	<Ticker speed={30} />
-	<Ticker speed={50} />
+	<Ticker speed={40} skills={['HTML/CSS', 'Responsive Design', 'Rest API']} />
+	<Ticker
+		speed={35}
+		skills={['Soft Skills', 'Version Control/Git', 'Terminal/Command Line']}
+	/>
+	<Ticker speed={55} skills={['Telegram Bots', 'Databases', 'Web Scraping']} />
 </div>
 
 <style>
@@ -15,6 +18,5 @@ import Ticker from './Ticker.astro'
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-		gap: 12px;
 	}
 </style>

@@ -8,54 +8,45 @@ import PageLayout from '../layouts/PageLayout.astro'
 	<div class='section hero'>
 		<div class='hero-container'>
 			<h1>Full Stack</h1>
-			<p class='hero-text'>
-				My technical toolkit includes proficiency in Framer, Figma, HTML, CSS,
-				JavaScript, and various design software like Adobe Creative Suite. I'm
-				also well-versed in responsive web design, ensuring that websites I
-				create look and function flawlessly across all devices.
-			</p>
 		</div>
 	</div>
 	<div class='section skills'>
-		<SkillCard>
-			<h3 slot='title' class='stack-title-text'>Framer</h3>
-			<p slot='role' class='role'>Web Design</p>
-			<p slot='description' class='description'>
-				Framer serves as my go-to tool for creating interactive prototypes. I
-				use it to bring designs to life, allowing stakeholders to experience the
-				user flow and interactions before development begins. It's invaluable
-				for refining the user experience.
-			</p>
+		<SkillCard icon='react' link='https://reactjs.org'>
+			<h3 slot='title' class='stack-title-text'>React</h3>
 		</SkillCard>
-		<SkillCard>
-			<h3 slot='title' class='stack-title-text'>Framer</h3>
-			<p slot='role' class='role'>Web Design</p>
-			<p slot='description' class='description'>
-				Framer serves as my go-to tool for creating interactive prototypes. I
-				use it to bring designs to life, allowing stakeholders to experience the
-				user flow and interactions before development begins. It's invaluable
-				for refining the user experience.
-			</p>
+		<SkillCard icon='nextjs' link='https://nextjs.org'>
+			<h3 slot='title' class='stack-title-text'>NextJS</h3>
 		</SkillCard>
-		<SkillCard>
-			<h3 slot='title' class='stack-title-text'>Framer</h3>
-			<p slot='role' class='role'>Web Design</p>
-			<p slot='description' class='description'>
-				Framer serves as my go-to tool for creating interactive prototypes. I
-				use it to bring designs to life, allowing stakeholders to experience the
-				user flow and interactions before development begins. It's invaluable
-				for refining the user experience.
-			</p>
+		<SkillCard icon='astro' link='https://astro.build'>
+			<h3 slot='title' class='stack-title-text'>Astro</h3>
 		</SkillCard>
-		<SkillCard isEnd>
-			<h3 slot='title' class='stack-title-text'>Framer</h3>
-			<p slot='role' class='role'>Web Design</p>
-			<p slot='description' class='description'>
-				Framer serves as my go-to tool for creating interactive prototypes. I
-				use it to bring designs to life, allowing stakeholders to experience the
-				user flow and interactions before development begins. It's invaluable
-				for refining the user experience.
-			</p>
+		<SkillCard
+			icon='javascript'
+			link='https://developer.mozilla.org/en-US/docs/Web/JavaScript'
+		>
+			<h3 slot='title' class='stack-title-text'>JavaScript</h3>
+		</SkillCard>
+		<SkillCard icon='typescript' link='https://www.typescriptlang.org'>
+			<h3 slot='title' class='stack-title-text'>TypeScript</h3>
+		</SkillCard>
+
+		<!-- <SkillCard icon='node' link='https://nodejs.org'>
+			<h3 slot='title' class='stack-title-text'>NodeJS</h3>
+		</SkillCard>
+		<SkillCard icon='express' link='https://expressjs.com'>
+			<h3 slot='title' class='stack-title-text'>ExpressJS</h3>
+		</SkillCard> -->
+		<SkillCard icon='postgresql' link='https://www.postgresql.org'>
+			<h3 slot='title' class='stack-title-text'>PostgreSQL</h3>
+		</SkillCard>
+		<SkillCard icon='redis' link='https://redis.io'>
+			<h3 slot='title' class='stack-title-text'>Redis</h3>
+		</SkillCard>
+		<SkillCard icon='tailwind' link='https://tailwindcss.com'>
+			<h3 slot='title' class='stack-title-text'>Tailwind</h3>
+		</SkillCard>
+		<SkillCard icon='python' link='https://www.python.org'>
+			<h3 slot='title' class='stack-title-text'>Python</h3>
 		</SkillCard>
 	</div>
 	<ContactSection />
@@ -76,6 +67,14 @@ import PageLayout from '../layouts/PageLayout.astro'
 		color: var(--light-60);
 	}
 	.skills {
-		gap: 8px;
+		display: grid;
+		grid-template-columns: repeat(3, minmax(200px, 1fr));
+		gap: 16px;
+		@media screen and (max-width: 800px) {
+			grid-template-columns: repeat(2, minmax(200px, 1fr));
+		}
+		@media screen and (max-width: 500px) {
+			grid-template-columns: repeat(1, minmax(200px, 1fr));
+		}
 	}
 </style>

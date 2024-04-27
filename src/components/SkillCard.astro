@@ -1,30 +1,75 @@
 ---
-import Framer from './Icons/Framer.astro'
+import AstroJS from './Icons/AstroJS.astro'
+import Docker from './Icons/Docker.astro'
+import Express from './Icons/Express.astro'
+import JavaScript from './Icons/JavaScript.astro'
+import NextJS from './Icons/NextJS.astro'
+import NodeJS from './Icons/NodeJS.astro'
+import PostgreSQL from './Icons/PostgreSQL.astro'
+import Python from './Icons/Python.astro'
+import ReactJS from './Icons/ReactJS.astro'
+import Redis from './Icons/Redis.astro'
+import Tailwind from './Icons/Tailwind.astro'
+import TypeScript from './Icons/TypeScript.astro'
+type Icons =
+	| 'react'
+	| 'nextjs'
+	| 'astro'
+	| 'typescript'
+	| 'javascript'
+	| 'python'
+	| 'tailwind'
+	| 'docker'
+	| 'express'
+	| 'node'
+	| 'postgresql'
+	| 'redis'
 interface Props {
 	isEnd?: boolean
+	icon: Icons
+	link?: string
 }
-const { isEnd = false } = Astro.props
+const { isEnd = false, icon, link = '#' } = Astro.props
+const iconMap = {
+	react: ReactJS,
+	nextjs: NextJS,
+	astro: AstroJS,
+	typescript: TypeScript,
+	javascript: JavaScript,
+	python: Python,
+	tailwind: Tailwind,
+	docker: Docker,
+	express: Express,
+	node: NodeJS,
+	postgresql: PostgreSQL,
+	redis: Redis,
+}
+const IconComponent = iconMap[icon]
 ---
 
 <div class='stack'>
-	<a href='#' class='stack-link'>
+	<a href={link} class='stack-link' target='_blank'>
 		<div class='stack-header'>
 			<div class='stack-icon'>
-				<Framer size={44} />
+				<IconComponent size={44} viewBox='0 0 128 128' />
 			</div>
 			<div class='stack-title'>
 				<slot name='title' class='stack-title-text' />
 				<slot name='role' class='role' />
 			</div>
 		</div>
-		<div class='stack-description'>
-			<div class='line-container'>
-				{!isEnd && <div class='line' />}
-			</div>
-			<div class='description-container'>
-				<slot name='description' />
-			</div>
-		</div>
+		<!-- {
+			!isEnd && (
+				<div class='stack-description'>
+					<div class='line-container'>
+						<div class='line' />
+					</div>
+					<div class='description-container'>
+						<slot name='description' />
+					</div>
+				</div>
+			)
+		} -->
 	</a>
 </div>
 

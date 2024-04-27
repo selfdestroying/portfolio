@@ -3,8 +3,9 @@ import SkillPill from './SkillPill.astro'
 interface Props {
 	speed?: number
 	reverse?: boolean
+	skills: [string, string, string]
 }
-const { speed = 5, reverse = false } = Astro.props
+const { speed = 5, reverse = false, skills } = Astro.props
 ---
 
 <div class='ticker'>
@@ -15,9 +16,13 @@ const { speed = 5, reverse = false } = Astro.props
 			animationDirection: reverse ? 'reverse' : 'normal',
 		}}
 	>
-		<li class='ticker-item'><SkillPill title='Responsive Design' /></li>
-		<li class='ticker-item'><SkillPill title='UI/UX Expertise' /></li>
-		<li class='ticker-item'><SkillPill title='HTML5/CSS3 Mastery' /></li>
+		{
+			skills.map(skill => (
+				<li class='ticker-item'>
+					<SkillPill title={skill} />
+				</li>
+			))
+		}
 	</ul>
 	<ul
 		class='ticker-list'
@@ -26,9 +31,13 @@ const { speed = 5, reverse = false } = Astro.props
 			animationDirection: reverse ? 'reverse' : 'normal',
 		}}
 	>
-		<li class='ticker-item'><SkillPill title='Responsive Design' /></li>
-		<li class='ticker-item'><SkillPill title='UI/UX Expertise' /></li>
-		<li class='ticker-item'><SkillPill title='HTML5/CSS3 Mastery' /></li>
+		{
+			skills.map(skill => (
+				<li class='ticker-item'>
+					<SkillPill title={skill} />
+				</li>
+			))
+		}
 	</ul>
 </div>
 

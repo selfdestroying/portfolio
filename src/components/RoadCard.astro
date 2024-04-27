@@ -1,21 +1,26 @@
 ---
 interface Props {
 	state?: 'start' | 'end'
+	title: string
+	description: string
+	link?: string
 }
 
-const { state = 'start' } = Astro.props
+const { state = 'start', title, description, link = '#' } = Astro.props
 ---
 
 <div class='info-card'>
-	<div class=`road ${state}`>
-		<div class='road-dot'></div>
-		{state === 'start' && <div class='road-line' />}
-	</div>
+	<a href={link} class='info-card' target='_blank'>
+		<div class=`road ${state}`>
+			<div class='road-dot'></div>
+			{state === 'start' && <div class='road-line' />}
+		</div>
 
-	<div class='info-card-container'>
-		<h3>Bachelor's Degree in Web Design and Development</h3>
-		<p>XYZ University, 2010</p>
-	</div>
+		<div class='info-card-container'>
+			<h3>{title}</h3>
+			<p>{description}</p>
+		</div>
+	</a>
 </div>
 
 <style>

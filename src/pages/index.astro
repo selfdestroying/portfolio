@@ -15,13 +15,10 @@ const allProjects = await getCollection('projects')
 <PageLayout title='Home'>
 	<div class='section hero'>
 		<div class='hero-text'>
-			<h1 class='hero-title'>Hello there! Leon here!</h1>
+			<h1 class='hero-title'>Hey there! I'm thrilled to have you here.</h1>
 			<p class='hero-subtitle'>
-				I'm a passionate web designer who crafts digital experiences with a
-				perfect blend of creativity and functionality. With an eye for detail
-				and a love for clean, user-friendly designs, I bring websites to life
-				that not only look stunning but also deliver seamless and enjoyable user
-				journeys.
+				As a passionate web developer, I am excited to share my journey and the
+				projects I have created using a variety of cutting-edge technologies.
 			</p>
 		</div>
 		<Button text='More about Me' link='about' theme='dark' icon='right-arrow' />
@@ -42,14 +39,16 @@ const allProjects = await getCollection('projects')
 		<SectionTitle title='Projects' icon='pencilline' />
 		<div class='projects-list'>
 			{
-				allProjects.map(project => (
-					<ProjectCard
-						title={project.data.title}
-						url={project.slug}
-						tags={project.data.tags}
-						imageUrl={project.data.image.url}
-					/>
-				))
+				allProjects
+					.slice(0, 2)
+					.map(project => (
+						<ProjectCard
+							title={project.data.title}
+							url={project.slug}
+							tags={project.data.tags}
+							imageUrl={project.data.image.url}
+						/>
+					))
 			}
 		</div>
 		<Button
@@ -62,25 +61,21 @@ const allProjects = await getCollection('projects')
 	<div class='section'>
 		<SectionTitle title='Stack' icon='stacksimple' />
 		<div class='stacks'>
-			<SkillCard>
-				<h3 slot='title' class='stack-title-text'>Framer</h3>
-				<p slot='role' class='role'>Web Design</p>
-				<p slot='description' class='description'>
-					Framer serves as my go-to tool for creating interactive prototypes. I
-					use it to bring designs to life, allowing stakeholders to experience
-					the user flow and interactions before development begins. It's
-					invaluable for refining the user experience.
-				</p>
+			<SkillCard icon='react' link='https://reactjs.org'>
+				<h3 slot='title' class='stack-title-text'>React</h3>
 			</SkillCard>
-			<SkillCard isEnd>
-				<h3 slot='title' class='stack-title-text'>Framer</h3>
-				<p slot='role' class='role'>Web Design</p>
-				<p slot='description' class='description'>
-					Framer serves as my go-to tool for creating interactive prototypes. I
-					use it to bring designs to life, allowing stakeholders to experience
-					the user flow and interactions before development begins. It's
-					invaluable for refining the user experience.
-				</p>
+			<SkillCard isEnd icon='nextjs' link='https://nextjs.org'>
+				<h3 slot='title' class='stack-title-text'>NextJS</h3>
+			</SkillCard>
+			<SkillCard isEnd icon='typescript' link='https://www.typescriptlang.org'>
+				<h3 slot='title' class='stack-title-text'>TypeScript</h3>
+			</SkillCard>
+			<SkillCard
+				isEnd
+				icon='javascript'
+				link='https://developer.mozilla.org/en-US/docs/Web/JavaScript'
+			>
+				<h3 slot='title' class='stack-title-text'>JavaScript</h3>
 			</SkillCard>
 		</div>
 		<Button text='Full Stack' link='stack' theme='dark' icon='right-arrow' />
@@ -160,8 +155,11 @@ const allProjects = await getCollection('projects')
 	}
 	.projects-list {
 		width: 100%;
-		display: flex;
-		flex-direction: row;
+		display: grid;
+		flex: 0 0 auto;
+		gap: 24px;
+		grid-auto-rows: minmax(0px, 1fr);
+		grid-template-columns: repeat(2, minmax(200px, 1fr));
 		@media screen and (max-width: 800px) {
 			flex-direction: column;
 		}
@@ -178,9 +176,16 @@ const allProjects = await getCollection('projects')
 	}
 	.stacks {
 		display: flex;
-		flex-direction: column;
-		align-items: center;
+		flex-direction: row;
 		justify-content: center;
-		gap: 8px;
+		align-items: center;
+		gap: 16px;
+		@media screen and (max-width: 800px) {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(200px, 1fr));
+		}
+		@media screen and (max-width: 500px) {
+			grid-template-columns: repeat(1, minmax(200px, 1fr));
+		}
 	}
 </style>
